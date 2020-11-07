@@ -6,7 +6,7 @@
 /*   By: rjeraldi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 11:41:47 by rjeraldi          #+#    #+#             */
-/*   Updated: 2019/10/15 19:32:39 by rjeraldi         ###   ########.fr       */
+/*   Updated: 2020/11/08 02:16:42 by rjeraldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int					get_next_line(const int fd, char **line)
 		{
 			*line = buf[fd];
 			buf[fd] = NULL;
-			out = (ft_strlen(*line) > 0) ? 1 : 0;
+			if (!(out = ft_strlen(*line) > 0 ? 1 : 0))
+				ft_strdel(line);
 			break ;
 		}
 		else if (ssread == -1)
